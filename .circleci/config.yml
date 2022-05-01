@@ -32,7 +32,7 @@ jobs:
       - restore_cashe:
       keys:
         -"npm-packages"
-      - run: npm sudit
+      - run: npm audit
 
 workflows:
   my_workflow:
