@@ -6,32 +6,20 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run npm i
-      - save_cashe:
-        key: 'npm-packages'
-        paths:
-          - /src/node_modules
-      - run:npm run lint
-  
+      - run: npm i
+      - run: npm run lint
   test:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cashe:
-        keys: 
-          - 'npm-packages'
       - run: npm i
       - run: npm run test
-
   analyze:
     docker:
-      - image: corcleci/node:13/8/0
-    steps: 
+      - image: circleci/node:13.8.0
+    steps:
       - checkout
-      - restore_cashe:
-      keys:
-        -"npm-packages"
       - run: npm audit
 
 workflows:
