@@ -22,6 +22,19 @@ jobs:
       - checkout
       - run: npm audit
 
+  create_infrastructure: 
+      docker:
+        - image: amazon/aws-cli
+      steps:
+        - checkout
+        - run:
+            name: Create Cloudformation Stack
+            command: |
+              aws cloudformation deploy \
+                --template-file template.yml \
+                --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
+                --region us-west-2
+
 workflows:
   my_workflow:
     jobs:
@@ -32,3 +45,6 @@ workflows:
       # - analyze:
       #     requires:
       #       - test
+      - create_infrastructure:
+          requires:
+            - test
