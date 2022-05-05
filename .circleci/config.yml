@@ -47,6 +47,10 @@ jobs:
           command: |
             apk add --update ansible
       - run:
+          command: 
+            ansible --version
+
+      - run:
           name: Run playbook and config server
           command: |
             ansible-playbook -i inventory main.yml -c paramiko
