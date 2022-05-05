@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Run playbook and config server
           command: |
-            ansible-playbook -i inventory main.yml --private-key Udacity-2.pem
+            ansible-playbook -i inventory main.yml --private-key ../Udacity-2.pem
         
 
 
