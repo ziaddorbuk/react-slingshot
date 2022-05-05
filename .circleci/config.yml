@@ -40,8 +40,8 @@ jobs:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
-      # - add_ssh_keys:
-      #     fingerprints: [44:b9:4f:3c:7a:bb:29:c3:75:79:6e:c4:16:ff:d4:52]
+      - add_ssh_keys:
+          fingerprints: [44:b9:4f:3c:7a:bb:29:c3:75:79:6e:c4:16:ff:d4:52]
       - run:
           name: Install Ansible
           command: |
@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Run playbook and config server
           command: |
-            ansible-playbook -i inventory main.yml --private-key ../Udacity-2.pem
+            ansible-playbook -i inventory main.yml
         
 
 
