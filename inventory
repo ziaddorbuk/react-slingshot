@@ -1,6 +1,2 @@
-
-[testServer]
+[all]
 ec2-54-191-243-59.us-west-2.compute.amazonaws.com
-
-[testServer:vars]
-ansible_password=vagrant
