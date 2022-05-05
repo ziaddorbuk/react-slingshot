@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Run playbook and config server
           command: |
-            ansible-playbook -i -y inventory main.yml
+            sudo ansible-playbook -i inventory main.yml
         
 
 
