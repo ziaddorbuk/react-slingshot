@@ -37,21 +37,15 @@ jobs:
 
   configure_infrastructure: 
     docker:
-      - image: cimg/python:3.10.4
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints: ["44:b9:4f:3c:7a:bb:29:c3:75:79:6e:c4:16:ff:d4:52"]
-
       - run:
           name: Install Ansible
           command: |
-            pip --version
-
-      - run:
-          name: Install Ansible
-          command: |
-            -m pip install --user ansible
+            apk add --update ansible
 
       - run:
           name: Run playbook and config server
